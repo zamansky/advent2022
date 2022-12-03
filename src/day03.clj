@@ -37,7 +37,7 @@ CrZsJsPPZsGzwwsLwLmpwMDw")
   (->> (str/split data #"\n")
        (map  parse-part1)
        (reduce +)))
-
+ 
 (part1 sample)
 (part1 data)
 
@@ -52,7 +52,6 @@ CrZsJsPPZsGzwwsLwLmpwMDw")
 
 (part2 sample)
 (part2 data)
-
 
 
 
