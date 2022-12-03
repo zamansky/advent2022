@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: k2bd/advent-readme-stars@v1
         with:
-          userId: 49881
+	  userId: 49881
 	  leaderboardId: 49881
           sessionCookie: 53616c7465645f5f6df329ec59a991137c5fb2e6d361638368fc1f6e73ee28b1246b2f8c2e5ec9921a61aed81d07b99e43ad6513bf779a989c7f02f345558d86
 	  year: 2022
