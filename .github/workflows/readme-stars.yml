@@ -16,4 +16,4 @@ jobs:
 	  year: 2022
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update README stars
+          commit_message: Update README.org stars
