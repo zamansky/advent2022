@@ -46,7 +46,18 @@ move 1 from 1 to 2")
     (if (= count 0)
       towers
       (recur (single-move [src dst] towers) (dec count) ) )))
-    
+
+(defn parse-move [line]
+  (let [[_ count src dst] (re-find #"move (\d) from (\d) to (\d)" line)]
+    [src dst (read-string count)]))
+(defn part1 [towers raw-moves]
+  (reduce (fn [acc [src dst count]]
+            (multi-move [src dst count] acc)) towers
+          (map parse-move (str/split-lines raw-moves))))
+
+(def ans (part1 towers raw-moves))
+ans
+
 (single-move [\2 \1] towers)
 (multi-move [\2 \3 3] towers)
 (get  towers \1)
