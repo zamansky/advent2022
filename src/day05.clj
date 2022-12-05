@@ -33,7 +33,7 @@ move 1 from 1 to 2")
 
 (def towers (make-towers raw-stacks))
      
-(defn move [[src dest] towers]
+(defn single-move [[src dest] towers]
   (let [val (last (get towers src))
         towers (update towers src drop-last)
         towers (update towers dest conj val)
@@ -41,6 +41,13 @@ move 1 from 1 to 2")
         towers)
   )
 
-(move [\2 \1] towers)
+(defn multi-move [[src dst count] towers]
+  (loop  [towers towers count count]
+    (if (= count 0)
+      towers
+      (recur (single-move [src dst] towers) (dec count) ) )))
+    
+(single-move [\2 \1] towers)
+(multi-move [\2 \3 3] towers)
 (get  towers \1)
 
