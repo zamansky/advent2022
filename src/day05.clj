@@ -8,6 +8,39 @@
    [clojure.set :as set]
    [clojure.walk :as walk]))
 
-(def z (str/split-lines"one\ntwo\nthree"))
+(def raw-sample "    [D]    
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 
 
-(apply mapv vector z)
+move 1 from 2 to 1
+move 3 from 1 to 3
+move 2 from 2 to 1
+move 1 from 1 to 2")
+
+
+
+(def raw-stacks (first (str/split raw-sample #"\n\n")))
+(def raw-moves (second (str/split raw-sample #"\n\n")))
+
+(defn make-towers [raw-stacks] (->> (str/split-lines raw-stacks)
+                                    (apply mapv vector)
+                                    (mapv reverse)
+                                    (filterv (fn [x] (not= (first x) \space)))
+                                    (mapv (fn [x] (filterv #(not= % \space) x)))
+                                    (reduce (fn [acc next]
+                                              (assoc acc (first next) (into [] (rest next)))) {})))
+
+(def towers (make-towers raw-stacks))
+     
+(defn move [[src dest] towers]
+  (let [val (last (get towers src))
+        towers (update towers src drop-last)
+        towers (update towers dest conj val)
+        ]
+        towers)
+  )
+
+(move [\2 \1] towers)
+(get  towers \1)
+
