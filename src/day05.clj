@@ -51,9 +51,11 @@ move 1 from 1 to 2")
   (let [[_ count src dst] (re-find #"move (\d) from (\d) to (\d)" line)]
     [src dst (read-string count)]))
 
-  (reduce (fn [acc [src dst count]]
-          #p (multi-move [(first src) (first dst) count] acc)) towers
-          (map parse-move (str/split-lines raw-moves)))
+(def ans (into (sorted-map)  (reduce (fn [acc [src dst count]]
+          (multi-move [(first src) (first dst) count] acc)) towers
+          (map parse-move (str/split-lines raw-moves))))))
+
+(map (comp last second) ans)
 
 (multi-move  (first (map parse-move (str/split-lines raw-moves)))towers )
 (multi-move ["2 "1" 1]")
