@@ -10,21 +10,6 @@
 
 (def data (slurp "data/day06.dat"))
   
-(defn part1 [line]
-  (let [seq (->> (partition 4 1 line)
-                 (map frequencies)
-                 (map count)
-                 (map-indexed (fn [idx item] [idx item]))
-                 (drop-while (fn [[idx item]] (not= item 4))))]
-    (+ 4 (first (first seq)))))
-(defn part1 [line]
-  (let [seq (->> (partition 4 1 line)
-                 (map frequencies)
-                 (map count)
-                 (map-indexed (fn [idx item] [idx item]))
-                 (drop-while (fn [[idx item]] (not= item 4))))]
-    (+ 4 (first (first seq)))))
-
 (defn solve [line length]
   (let [seq (->> (partition length 1 line)
                  (map frequencies)
