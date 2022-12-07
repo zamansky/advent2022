@@ -97,12 +97,16 @@ $ ls
 (def free-space (- 70000000 space-used))
 (def space-needed (-  30000000 free-space))
 
-( def part2-ans
+(defn part2 [state]
+  (let [nodes (set/union (keys (:listings state))
+                         (keys (:dirs state)))
+        ]
  (->> (map #(sizes % state ) nodes)
       (filter (fn [x] (>
                        (-  (+ x 70000000) (sizes "/" state)) 30000000)))
      (apply min)
      ))
+)
 
-
+(part2 state)
 
