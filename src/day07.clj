@@ -88,14 +88,7 @@ $ ls
 (part1 state)
 
 
-(def nodes
-  (set/union (keys (:listings state))
-             (keys (:dirs state))))
 
-(def space-used) (sizes "/" staet)
-
-(def free-space (- 70000000 space-used))
-(def space-needed (-  30000000 free-space))
 
 (defn part2 [state]
   (let [nodes (set/union (keys (:listings state))
