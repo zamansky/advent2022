@@ -33,8 +33,8 @@
                               idx (mod next 40 )]
                           (if (and (<= (dec val) idx) (>= (inc val) idx))
                             (str screen "#")
-                            (str screen ".")))) "" (range 240))
-        screen-lines (map #(apply str %) (partition 40 z))
+                            (str screen " ")))) "" (range 240))
+        screen-lines (map #(apply str %) (partition 40 chars))
         ]
     screen-lines
     ))
