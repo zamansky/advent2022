@@ -39,4 +39,4 @@
     screen-lines
     ))
 
-
+(map println (part2 data))
