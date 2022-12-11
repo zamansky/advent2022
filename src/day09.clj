@@ -132,7 +132,7 @@ U 20"))
                state
                moves))
 
-(part1 instructions state)q
+(part1 instructions state)
 
 
 (def p2state {:rope (apply vector (repeat 11 [0 0])) :visited {}})
