@@ -41,8 +41,6 @@
     
 
 
-(defn abs [n] (max n (- n)))
-
 (defn char->int [c]
   (Long/parseLong (String/valueOf c)))
 
