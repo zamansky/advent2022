@@ -86,14 +86,16 @@ abdefghi")
     g/digraph
     (alg/bf-path [20 0] [20 135])
     count
+    dec
     )
 
-;; 32 
+;; 31 
 (-> (make-edged-graph sample)
     make-loom-graph
     g/digraph
     (alg/bf-path [0 0] [2 5])
     count
+    dec
     )
 
 
