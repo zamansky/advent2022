@@ -4,26 +4,6 @@
             [hashp.core ]
             [clojure.edn :as edn]))
 
-
-
-(defn load-data [filename]
-  (slurp (str "data/" filename)))
-
-(defn parse-bigint [s]
-  "string->int"
-  (biginteger (re-find  #"\-?\d+" s )))
-
-
-
-(defn parse-int
-  "string->int"
-  ([s] (parse-int s nil))
-  ([s default]
-  (try (Integer. (re-find  #"\-?\d+" s ))
-       (catch Exception r default))
-  ))
-
-
 (defn download-data
   "if file doesn't already exist, download the data and store in
   data/day#.dat"
@@ -39,6 +19,28 @@
       "File already exists"
       )))
     
+
+
+
+(defn load-data [year day]
+  (download-data year day)
+  (let [fname (format "day%02d.dat" day)]
+  (slurp (str "data/" fname))))
+
+(defn parse-bigint [s]
+  "string->int"
+  (biginteger (re-find  #"\-?\d+" s )))
+
+
+
+(defn parse-int
+  "string->int"
+  ([s] (parse-int s nil))
+  ([s default]
+  (try (Integer. (re-find  #"\-?\d+" s ))
+       (catch Exception r default))
+  ))
+
 
 
 (defn char->int [c]

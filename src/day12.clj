@@ -54,11 +54,6 @@ abdefghi")
   (reduce (fn [nodes next]
             (assoc-in nodes [next :edges] (find-neighbors next nodes))) graph (keys graph)))
 
-(def loom-input (reduce (fn [acc next]
-                          (assoc acc
-                                 (:loc (sample-graph next))
-                                 (:edges (sample-graph next))))
-                        {} (keys sample-graph)))
 
 (defn make-edged-graph [data] (-> data
                                   make-graph
@@ -115,6 +110,6 @@ abdefghi")
 ;; find path from each a to exit, answer will be one less than
 ;; smallest non-zero
 ;; it would have been faster to search from exit to first a but
-;; I don't know how to do that with the look library
+;; I don't know how to do that with the loom library
 (drop-while #(= 0 %) (sort (map #(count (alg/bf-path gg % [20 135])) (keys acoords))))
 
